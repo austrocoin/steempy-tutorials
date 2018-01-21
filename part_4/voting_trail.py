@@ -13,10 +13,13 @@ template = "@{}/{}"
 steem = Steem()
 blockchain = Blockchain()
 stream = blockchain.stream(filter_by=["vote"])
+stream = map(Post, b.stream(filter_by=['comment']))
 
 if __name__ == '__main__':
     while True:
         try:
+            for post in stream:
+                postTags = post.json_metadata.get('tags', [])
             for vote in stream:
                 voter = vote["voter"]
                 author = vote["author"]
@@ -25,10 +28,13 @@ if __name__ == '__main__':
                 if voter in voting_trail:
                     post = template.format(author, permlink)
                     tags = post["tags"]
-                    if Post(post).is_main_post() and tag in tags:
+                    if Post(post).is_main_post() and tag in postTags:
                         print("Voting on {} post that {} voted on!".format(
                             permlink, voter))
                         steem.vote(post, 100)
+                        
+                        
+                        
         except Exception as error:
             print(repr(error))
             continue

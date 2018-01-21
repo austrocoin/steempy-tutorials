@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
                 if voter in voting_trail:
                     post = template.format(author, permlink)
-                    tags = post["tags"]
+                    postTags = post["tags"]
                     if Post(post).is_main_post() and tag in postTags:
                         print("Voting on {} post that {} voted on!".format(
                             permlink, voter))

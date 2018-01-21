@@ -5,7 +5,7 @@ from steem.post import Post
 #create steem instance & pass it your private posting key
 s = Steem(keys = ["<your private posting key>"])
 
-tag = "keyword"
+tag = ["keyword"]
 
 voting_trail = ["amosbastian", "juliank"]
 template = "@{}/{}"

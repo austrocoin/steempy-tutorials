@@ -5,6 +5,8 @@ from steem.post import Post
 #create steem instance & pass it your private posting key
 s = Steem(keys = ["<your private posting key>"])
 
+tag = "keyword"
+
 voting_trail = ["amosbastian", "juliank"]
 template = "@{}/{}"
 
@@ -22,7 +24,8 @@ if __name__ == '__main__':
 
                 if voter in voting_trail:
                     post = template.format(author, permlink)
-                    if Post(post).is_main_post():
+                    tags = post["tags"]
+                    if Post(post).is_main_post() and tag in tags:
                         print("Voting on {} post that {} voted on!".format(
                             permlink, voter))
                         steem.vote(post, 100)

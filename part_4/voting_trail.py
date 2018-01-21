@@ -13,7 +13,7 @@ template = "@{}/{}"
 
 steem = Steem()
 blockchain = Blockchain()
-stream = blockchain.stream(filter_by=["vote"])
+stream = blockchain.stream(filter_by=["vote", "comment"])
 
 
 if __name__ == '__main__':

@@ -5,7 +5,8 @@ from steem.post import Post
 #create steem instance & pass it your private posting key
 s = Steem(keys = ["<your private posting key>"])
 
-tag = ["keyword"]
+#define trailing categories (tags)
+tag = ["keyword1", "keyword2", "keyword3"]
 
 voting_trail = ["amosbastian", "juliank"]
 template = "@{}/{}"
@@ -13,7 +14,7 @@ template = "@{}/{}"
 steem = Steem()
 blockchain = Blockchain()
 stream = blockchain.stream(filter_by=["vote"])
-stream = map(Post, b.stream(filter_by=['comment']))
+#stream = map(Post, blockchain.stream(filter_by=['comment']))
 
 if __name__ == '__main__':
     while True:

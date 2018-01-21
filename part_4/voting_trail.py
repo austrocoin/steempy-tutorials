@@ -33,9 +33,11 @@ if __name__ == '__main__':
                         print("Voting on {} post that {} voted on!".format(
                             permlink, voter))
                         steem.vote(post, 100)
+                        print("... trailed with a 100% vote.")
                         
                         
                         
         except Exception as error:
+            print("... NOT trailed because:")
             print(repr(error))
             continue

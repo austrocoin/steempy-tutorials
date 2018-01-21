@@ -14,7 +14,7 @@ template = "@{}/{}"
 steem = Steem()
 blockchain = Blockchain()
 stream = blockchain.stream(filter_by=["vote"])
-#stream = map(Post, blockchain.stream(filter_by=['comment']))
+
 
 if __name__ == '__main__':
     while True:
